@@ -1,0 +1,73 @@
+# Xcode
+#
+build/
+DerivedData/
+*.xcworkspace/xcuserdata/
+*.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+*.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcshareddata/
+*.xcodeproj/xcshareddata/WorkspaceSettings.xcsettings
+
+# Swift Package Manager
+#
+.build/
+Packages/
+Package.resolved
+
+# CocoaPods (om du skulle använda det)
+#
+Pods/
+Podfile.lock
+
+# Carthage (om du skulle använda det)
+#
+Carthage/Build/
+
+# Fastlane (om du skulle använda det)
+#
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+# macOS generella filer
+#
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Ikoner
+Icon?
+*.icns
+
+# Thumbnails
+._*
+
+# Spotlight
+.Spotlight-V100
+.Trashes
+
+# SwiftPM Xcode integration
+.swiftpm/
+
+# User-specific Xcode settings
+xcuserdata/
+
+# Playground
+timeline.xctimeline
+playground.xcworkspace
+
+# Logs
+*.log
+
+# Menubar app artifacts (ibland dyker dessa upp)
+*.dSYM
+*.dSYM.zip
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+
