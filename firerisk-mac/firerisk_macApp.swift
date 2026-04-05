@@ -10,8 +10,8 @@ import SwiftUI
 @main
 struct firerisk_macApp: App {
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra("Brandrisk", systemImage: "flame") {
             ContentView()
-        }
+        }.menuBarExtraStyle(.window)
     }
 }
