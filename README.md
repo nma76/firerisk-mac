@@ -5,7 +5,7 @@ anything for you if your location is set elsewhere.
 
 At the moment there's no way to set the location, it shows the risk for your devices location.
 
-TODO: The icon switches color from green -> yellow -> orange -> red depending on the risk level. 
+The icon switches color from blue -> green -> yellow -> orange -> red depending on the risk level. 
 The status is updated every 5 minutes.  
 
 ![Brandriskindikator](firerisk-mac/Screenshots/Screenshot.png)
