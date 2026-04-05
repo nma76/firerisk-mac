@@ -41,16 +41,6 @@ struct ContentView: View {
         }
         .padding()
         .frame(width: 260, height: 260)
-        .task(id: model.location.longitude)
-        {
-            await model.loadRisk()
-        }
-        .task {
-            for await _ in Timer.publish(every: 300, on: .main, in: .common).autoconnect().values {
-                await model.loadRisk()
-            }
-        }
-
     }
 }
 

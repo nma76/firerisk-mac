@@ -18,7 +18,18 @@ class FireRiskViewModel: ObservableObject {
     @Published var loading = false
     @Published var error: String?
     
+    private var timer: AnyCancellable?
     private let service = FireRiskService()
+    
+    init() {
+        Task { await loadRisk() }
+        
+        timer = Timer.publish(every: 300, on: .main, in: .common)
+            .autoconnect()
+            .sink {
+                [weak self] _ in Task { await self?.loadRisk() }
+            }
+    }
     
     func loadRisk() async {
         guard let lat = location.latitude,
@@ -28,10 +39,10 @@ class FireRiskViewModel: ObservableObject {
         error = nil
         
         do {
-            riskForecast = try await service.getRisk(lat: lat, lon: lon)
-            fireBan = try await service.getFireBan(lat: lat, lon: lon)
+            self.riskForecast = try await service.getRisk(lat: lat, lon: lon)
+            self.fireBan = try await service.getFireBan(lat: lat, lon: lon)
         } catch {
-            //error = "Kunde inte hämta data"
+            self.error = "Kunde inte hämta data"
         }
         
         loading = false

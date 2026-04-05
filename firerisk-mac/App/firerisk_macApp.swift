@@ -15,7 +15,9 @@ struct firerisk_macApp: App {
         MenuBarExtra {
             ContentView(model: model)
         } label: {
-            Image(systemName: "flame")
+            Image(systemName: "flame.fill")
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(Color.riskColor(for: model.riskForecast?.riskIndex ?? 0))
         }.menuBarExtraStyle(.window)
     }
 }
