@@ -41,10 +41,11 @@ struct ContentView: View {
                 Divider()
                 
                 Text(ban.status ?? "").font(.headline)
+                Text(ban.statusMessage ?? "").font(.subheadline).fixedSize(horizontal: false, vertical: true)
             }
         }
         .padding()
-        .frame(width: 260, height: 200)
+        .frame(width: 260, height: 260)
         .task(id: location.longitude)
         {
             await loadRisk()
