@@ -27,22 +27,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
+        print("didUpdateLocations:", location.coordinate)
+
         latitude = location.coordinate.latitude
         longitude = location.coordinate.longitude
         reverseGeocode(location)
     }
-    
-    /*
-    func reverseGeocode(_ location: CLLocation) {
-        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-            if let placemark = placemarks?.first {
-                    DispatchQueue.main.async {
-                        self.city = placemark.locality
-                }
-            }
-        }
-    }
-     */
     
     func reverseGeocode(_ location: CLLocation) {
         let request = MKLocalPointsOfInterestRequest(center: location.coordinate, radius: 5000)
