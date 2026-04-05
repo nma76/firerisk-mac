@@ -43,4 +43,28 @@ class FireRiskService {
         let decoded = try JSONDecoder().decode(FireRiskResponse.self, from: data)
         return decoded.forecast
     }
+    
+    func getFireBan(lat: Double, lon: Double, lang: String = "sv") async throws -> FireProhibition {
+        let latStr = lat.dotFormat
+        let lonStr = lon.dotFormat
+        let urlString = "https://api.msb.se/brandrisk/v2/FireProhibition/\(lang)/\(latStr)/\(lonStr)"
+        print(urlString)
+        
+        guard let url = URL(string: urlString) else {
+            throw URLError(.badURL)
+        }
+        
+        let (data, response) = try await session.data(from: url)
+        
+        if let jsonString = String(data: data, encoding: .utf8) {
+            print("JSON:\n\n\(jsonString)")
+        }
+
+        guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
+            throw URLError(.badServerResponse)
+        }
+
+        let decoded = try JSONDecoder().decode(FireBanResponse.self, from: data)
+        return decoded.fireProhibition
+    }
 }

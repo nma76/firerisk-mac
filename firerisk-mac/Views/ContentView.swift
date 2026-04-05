@@ -12,6 +12,7 @@ struct ContentView: View {
     @StateObject private var location = LocationManager()
     
     @State private var riskForecast: Forecast?
+    @State private var fireBan: FireProhibition?
     @State private var loading = false
     @State private var error: String?
     
@@ -33,22 +34,17 @@ struct ContentView: View {
                 Divider()
                 
                 Text("Brandrisknivå: \(risk.riskIndex)").font(.headline)
-                Text("\(risk.riskMessage)").font(.subheadline).fixedSize(horizontal: false, vertical: true)
+                Text(risk.riskMessage ?? "").font(.subheadline).fixedSize(horizontal: false, vertical: true)
             }
             
-            Divider()
-            Text("Eldningsförbud: Inget").font(.headline)
-            
-            Divider()
-            Button("Reload") {
-                Task {
-                    await loadRisk()
-                }
-            }
+            if let ban = fireBan {
+                Divider()
                 
+                Text(ban.status ?? "").font(.headline)
+            }
         }
         .padding()
-        .frame(width: 260)
+        .frame(width: 260, height: 200)
         .task(id: location.longitude)
         {
             await loadRisk()
@@ -62,7 +58,7 @@ struct ContentView: View {
     }
     
     func loadRisk() async {
-        print("Task triggered!")
+        print("loadRisk triggered!")
         guard let lat = location.latitude,
               let lon = location.longitude else { return }
            
@@ -72,8 +68,9 @@ struct ContentView: View {
         do {
             let service = FireRiskService()
             riskForecast = try await service.getRisk(lat: lat, lon: lon)
+            fireBan = try await service.getFireBan(lat: lat, lon: lon)
         } catch {
-            self.error = "Kunde inte hämta brandrisk"
+            self.error = "Kunde inte hämta data"
         }
         
         loading = false
