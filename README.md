@@ -8,7 +8,7 @@ At the moment there's no way to set the location, it shows the risk for your dev
 TODO: The icon switches color from green -> yellow -> orange -> red depending on the risk level. 
 The status is updated every 5 minutes.  
 
-![Brandriskindikator](Screenshots/Screenshot.png)
+![Brandriskindikator](firerisk-mac/Screenshots/Screenshot.png)
 
 ## Installation
 TODO  
