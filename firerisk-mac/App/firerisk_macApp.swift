@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct firerisk_macApp: App {
+    @StateObject var model = FireRiskViewModel()
+    
     var body: some Scene {
-        MenuBarExtra("Brandrisk", systemImage: "flame") {
-            ContentView()
+        MenuBarExtra {
+            ContentView(model: model)
+        } label: {
+            Image(systemName: "flame")
         }.menuBarExtraStyle(.window)
     }
 }
