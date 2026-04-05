@@ -23,7 +23,7 @@ class FireRiskService {
     func getRisk(lat: Double, lon: Double, lang: String = "sv") async throws -> Forecast {
         let latStr = lat.dotFormat
         let lonStr = lon.dotFormat
-        let urlString = "https://brandriskapp.msb.se/v2/CurrentRisk/\(lang)/\(latStr)/\(lonStr)"
+        let urlString = "https://api.msb.se/brandrisk/v2/CurrentRisk/\(lang)/\(latStr)/\(lonStr)"
         print("Url:", urlString)
         
         guard let url = URL(string: urlString) else {
