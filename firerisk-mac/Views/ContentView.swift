@@ -13,7 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            if let city = model.location.city {
+            if let city = model.city {
                 Text("Visar brandrisk för: \(city)").font(.headline)
             } else {
                 Text("Hämtar position...").font(.headline)
@@ -40,7 +40,7 @@ struct ContentView: View {
             }
         }
         .padding()
-        .frame(width: 260, height: 260)
+        .frame(width: 260, height: 350)
     }
 }
 

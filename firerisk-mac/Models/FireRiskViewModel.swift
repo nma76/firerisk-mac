@@ -12,16 +12,22 @@ internal import Combine
 
 class FireRiskViewModel: ObservableObject {
     
-    @Published var location = LocationManager()
+    //@Published var location = LocationManager()
     @Published var riskForecast: Forecast?
     @Published var fireBan: FireProhibition?
+    @Published var city: String?
     @Published var loading = false
     @Published var error: String?
     
     private var timer: AnyCancellable?
+    private let location = LocationManager()
     private let service = FireRiskService()
     
     init() {
+        location.$city
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$city)
+        
         Task { await loadRisk() }
         
         timer = Timer.publish(every: 300, on: .main, in: .common)
