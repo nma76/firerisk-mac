@@ -1,3 +1,5 @@
+[![Build & Test (macOS)](https://github.com/nma76/firerisk-mac/actions/workflows/ci.yml/badge.svg)](https://github.com/nma76/firerisk-mac/actions/workflows/ci.yml)
+
 # Fire risk Mac
 
 This is an Menu Bar Extra App MacOs that shows fire risk and fire ban for your location in Sweden. This extension won't do
