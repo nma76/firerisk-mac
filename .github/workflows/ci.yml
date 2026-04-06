@@ -1,0 +1,28 @@
+name: Build & Test (macOS)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+        - name: Select latest Xcode
+        run: sudo xcode-select -s "$(ls -d /Applications/Xcode* | sort -V | tail -n1)"
+      
+      - name: Build project (Debug)
+        run: |
+          xcodebuild -scheme firerisk-mac -sdk macosx -destination 'platform=macOS' build
+      
+      # Lägg till teststeg om du har tester:
+      # - name: Run tests
+      #   run: |
+      #     xcodebuild test -scheme firerisk-mac -sdk macosx -destination 'platform=macOS'
+

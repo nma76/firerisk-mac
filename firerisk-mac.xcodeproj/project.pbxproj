@@ -25,6 +25,11 @@
 			path = "firerisk-mac";
 			sourceTree = "<group>";
 		};
+		DDEE0C822F83D067006140CD /* .github */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = .github;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,7 @@
 		DD3691A62F7FCC6F00359C7B = {
 			isa = PBXGroup;
 			children = (
+				DDEE0C822F83D067006140CD /* .github */,
 				DD40FB8D2F82B18400F35F82 /* commands.txt */,
 				DD1B7BC92F82894D0017B31B /* .gitignore */,
 				DD1B7BC72F82893C0017B31B /* README.md */,
@@ -74,6 +80,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				DD3691B12F7FCC6F00359C7B /* firerisk-mac */,
+				DDEE0C822F83D067006140CD /* .github */,
 			);
 			name = "firerisk-mac";
 			packageProductDependencies = (
